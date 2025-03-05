@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-
+import 'package:untitled/screen.dart';
+import 'alert.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -117,11 +118,18 @@ class _HomeWork1State extends State<HomeWork1> {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: () {
+                      final phoneNumber = phoneController.text.trim();
+                      String message = isValidNum(phoneNumber)
+                          ? "Số điện thoại đúng định dạng"
+                          : "Số điện thoại sai định dạng";
+
+                      Alert.showAlert(context, message);
+                    },
                     style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color>(
+                      backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.blue),
-                      shape: WidgetStateProperty.all<
+                      shape: MaterialStateProperty.all<
                           RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
